@@ -4,7 +4,9 @@ import chromadb
 class VectorStore:
 
     def __init__(self):
-        self.client = chromadb.Client()
+        self.client = chromadb.PersistentClient(
+            path="chroma_db"
+        )
 
         self.collection = self.client.get_or_create_collection(
             name="company_policy"
